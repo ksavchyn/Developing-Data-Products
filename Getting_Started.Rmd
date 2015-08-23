@@ -1,0 +1,23 @@
+---
+title: "Astrology App: Getting Started"
+author: "Kateryna Savchyn"
+date: "August 23, 2015"
+output: html_document
+---
+
+
+In order to use this app, simply input your date of birth using the calendar input. 
+
+Based on your date you will see your element, and personality traits :)
+
+### Here are my sources:
+
+- [Wikipedia Page on Western Astrology](https://en.wikipedia.org/wiki/Western_astrology)
+
+- [Wikipedia Page on the Zodiac](https://en.wikipedia.org/wiki/Zodiac)
+
+- [Wikipedia on Elements Based on Zodiac](https://en.wikipedia.org/wiki/Astrology_and_the_classical_elements#Elements_of_the_zodiac)
+
+- [Some Freelance Writer's Article on Personalities Based on Star-Sign](https://medium.com/@evestanley/what-are-the-positive-and-negative-traits-of-your-zodiac-sign-e2d5b515536a)
+
+- [Another Page on Zodiac-based Personality Traits](http://nuclear.ucdavis.edu/~rpicha/personal/astrology/)

@@ -1,0 +1,82 @@
+<style>.section .reveal .state-background {
+    background: black;
+
+    }
+.section .reveal h1,
+.section .reveal p {
+    color: white;
+    }
+</style>    
+
+
+What's Your Astrological Sign?
+========================================================
+author: Kateryna Savchyn
+date: `r date()`
+transition: concave
+font-family: 'Calibri'
+incremental: true
+
+How It Works
+========================================================
+incremental: true
+
+It's extremely easy, you just put in the date you were born.
+
+...that's pretty much it.
+
+Based on your DOB, this web app tells you:
+
+- your element 
+- your personality traits (both positive and negative) based on your sign 
+- see if you agree or think this is dumb!
+
+
+An Example
+========================================================
+
+<small> Here's an example of counts by astrological sign based on dates of birth for people born between Jan 1, 1969 and Dec 31, 1988 (from a dataset from Google's BigQuery, which I found [here](http://chmullig.com/2012/06/births-by-day-of-year/) ). It turns out finding datasets with dates of birth down to the day is sort of hard and the original National Vital Statistics System (NVSS) datasets are massive, so thankfully I was able to find this guy's query. </small>
+
+```{r, echo=F, fig.width=12.5, fig.height=5.5}
+library(ggplot2)
+data <- read.csv("births.csv")
+data$sign <- ifelse((data$month==3 & data$day %in% 21:31) | (data$month==4 & data$day %in% 1:19), "Aries", 
+        ifelse((data$month==4 & data$day %in% 20:31) | (data$month==5 & data$day %in% 1:20), "Taurus",
+        ifelse((data$month==5 & data$day %in% 21:31) | (data$month==6 & data$day %in% 1:21), "Gemini",
+        ifelse((data$month==6 & data$day %in% 22:31) | (data$month==7 & data$day %in% 1:22), "Cancer",
+        ifelse((data$month==7 & data$day %in% 23:31) | (data$month==8 & data$day %in% 1:22), "Leo", 
+        ifelse((data$month==8 & data$day %in% 23:31) | (data$month==9 & data$day %in% 1:22), "Virgo", 
+        ifelse((data$month==9 & data$day %in% 23:31) | (data$month==10 & data$day %in% 1:23), "Libra", 
+        ifelse((data$month==10 & data$day %in% 24:31)| (data$month==11 & data$day %in% 1:20), "Scorpio", 
+        ifelse((data$month==11 & data$day %in% 21:31)| (data$month==12 & data$day %in% 1:21), "Saggitarius", 
+        ifelse((data$month==12 & data$day %in% 22:31)| (data$month==1 & data$day %in% 1:20), "Capricorn", 
+        ifelse((data$month==1 & data$day %in% 21:31) | (data$month==2 & data$day %in% 1:21), "Aquarius", 
+        ifelse((data$month==2 & data$day %in% 22:31) | (data$month==3 & data$day %in% 1:20), "Pisces",
+        "I don't know"))))))))))))
+
+theme_set(theme_classic(12))
+q <- ggplot(data, aes(sign, births))
+q + geom_bar(stat="identity", color="blue", fill="lavender") + labs(title = "Count of Births between 1969 and 1988 by Astrological Sign")
+```
+
+Sources
+========================================================
+incremental: true
+
+Here's a list of pages I used to come up with the output for the app. Some of them might be interesting to check out.
+
+- [Wikipedia Page on Western Astrology](https://en.wikipedia.org/wiki/Western_astrology)
+- [Wikipedia Page on the Zodiac](https://en.wikipedia.org/wiki/Zodiac)
+- [Wikipedia on Elements Based on Zodiac](https://en.wikipedia.org/wiki/Astrology_and_the_classical_elements#Elements_of_the_zodiac)
+- [Some Freelance Writer's Article on Personalities Based on Star-Sign](https://medium.com/@evestanley/what-are-the-positive-and-negative-traits-of-your-zodiac-sign-e2d5b515536a)
+- [Another Page on Zodiac-based Personality Traits](http://nuclear.ucdavis.edu/~rpicha/personal/astrology/)
+
+The End
+========================================================
+type: section
+width: 1123
+height: 1710
+
+![visual](Astrology.jpg)
+
+
